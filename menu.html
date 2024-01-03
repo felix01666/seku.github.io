@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Seku Guest House</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  background-color:yellowgreen;
+}
+
+/* Header styles */
+header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color:green;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+header img {
+  height: 50px;
+  width: 50px;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-right: 20px;
+}
+
+nav a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+  background-color:yellowgreen;
+}
+
+
+/* Hero section styles */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: yellowgreen;
+  background-image: url("images/hero-image.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.hero-content {
+  text-align: center;
+  margin-top: -50px;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+}
+
+
+/* Services section styles */
+.services {
+  text-align: center;
+  padding: 2rem;
+}
+
+.services h2 {
+
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.services__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.services__item {
+  text-align: center;
+  flex-basis: calc(33.33% - 1rem);
+  background-color: yellowgreen;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.services__item img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.services__item h3 {
+  margin-bottom: 0.5rem;
+}
+
+.services__item p {
+  margin-bottom: 1rem;
+}
+
+
+/* Restaurant menu styles */
+.menu {
+  padding: 2rem;
+}
+
+.menu h2 {
+  margin-bottom: 1rem;
+}
+
+.menu__table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.menu__table th,
+.menu__table td {
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.menu__table th {
+  background-color: #333;
+  color: #fff;
+}
+
+.menu__table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.menu__table tr:hover {
+  background-color: #ddd
+}
+
+/*Offers section style*/
+.offers {
+  background-color:yellowgreen;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.offers h2 {
+  font-size: 36px;
+  margin-bottom: 50px;
+}
+
+.offers-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: yellowgreen;
+}
+
+.offer {
+  flex-basis: 300px;
+  margin: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  background-color: beige;
+}
+
+.offer img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.offer h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.offer p {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/*Footer*/
+/* Footer styles */
+footer {
+  background-color:green;
+  color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+footer img {
+  height: 50px;
+}
+
+footer p {
+  font-size: 14px;
+}
+
+footer nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+footer nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+footer nav a:hover {
+  color: #aaa;
+}
+
+/**About main section**/
+/* Main section styles */
+main {
+  margin: 2rem auto;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+body {
+  background-color: green;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-caption {
+  text-align: center;
+  font-style: italic;
+  color: white;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+/**Room reservation**/
+/**Availability form**/
+#availability {
+  padding: 50px;
+  background-color: yellowgreen;
+}
+
+#availability h2 {
+  font-size: 36px;
+  text-align: center;
+}
+
+#availability form {
+  background-color: yellowgreen;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#availability label {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+#availability select,
+#availability input[type="date"] {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#availability button[type="submit"] {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#availability button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+.availability-results {
+  margin-top: 30px;
+}
+
+.availability-results h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.availability-results p {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.availability-results span {
+  font-weight: bold;
+}
+
+.image-container{
+  margin:auto;
+  width: 725px;
+  height: 225;
+
+}
+.image-container img {
+width: 100%;
+height:100%;
+border-radius: 10%;
+border: 5px solid beige;
+}
+
+.image-containerr{
+  margin:auto;
+  width: 725px;
+  height: 225;
+
+}
+.image-containerr img {
+width: 100%;
+height:100%;
+border-radius: 10%;
+border: 5px solid beige;
+}
+
+.image-container6{
+  margin:auto;
+  width: 725px;
+  height: 225;
+
+}
+.image-container6 img {
+width: 100%;
+height:100%;
+border-radius: 10%;
+border: 5px solid beige;
+}
+
+.service-container {
+  text-align: center;
+  margin-top: -50px;
+}
+
+.service-container h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #333;
+}
+.service-container1 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.service-container h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+.service-container2 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.service-container h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+.service-container3 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.service-container h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+.service-container4 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.service-container h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+.service-container5 {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.service-container h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/**Reservation form **/
+form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"], input[type="tel"], input[type="date"], select, input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+input[type="submit"]:hover {
+  background-color: #213822;
+}
+
+input[type="submit"]:active {
+  background-color: #3e8e41;
+  transform: translateY(1px);
+}
+
+select {
+  height: 40px;
+}
+
+input:required {
+  border-color: #FF4136;
+}
+
+input:valid {
+  border-color: #2ECC40;
+}
+
+
+/**Reservation records**/
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+thead th {
+  text-align: left;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tbody tr:hover {
+  background-color: #ddd;
+}
+
+.download-button {
+  background-color: #4CAF50;
+  color: green;
+  border: none;
+  padding: 12px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+a:link{
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+a:visited{
+  color:rgb(255, 255, 255);
+  background-color: transparent;
+  text-decoration: none;
+}
+
+
+a:hover{
+  color:black;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+
+a:active {
+  color: red;
+}
+
+nav ul li a {
+  color: white;
+  background-color: transparent;
+  text-decoration: none;
+}
+
+nav ul li a:hover {
+  color: black;
+  background-color: transparent;
+  text-decoration: underline;
+}
+
+nav ul li a.current {
+  color: red;
+}
+
+
+
+
+/*login form*/
+form {
+  background-color: green;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  color: white;
+}
+
+input[type="text"],
+input[type="password"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  border: none;
+  font-size: 16px;
+}
+
+input[type="submit"] {
+  background-color: white;
+  color: green;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+  </style>
+  <script src="js/index.js"></script>
+</head>
+<br><br>
+<br>
+<body>
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Seku Guest House Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="reservation.html">Room Reservation</a></li>
+        <li><a href="staff.html">Staff Management</a></li>
+        <li><a href="stock.html">Stock Management</a></li>
+        <li><a href="admin.html">Manager Dashboard</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="group.html">work team</a></li>
+      </ul>
+    </nav>
+  </header><br><br>
+  <h1>Food Menu</h1>
+
+<table class="menu-table">
+    <thead>
+      <tr>
+        <th>Number</th>
+        <th>Name</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Chicken</td>
+        <td>Ksh500</td>
+      </tr>
+      <tr>
+        <td>2</td>
+        <td>Fish</td>
+        <td>Ksh600</td>
+      </tr>
+      <tr>
+        <td>3</td>
+        <td>Pizza</td>
+        <td>Ksh700</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</div>
+</section><br><br><br>
+
+  <!--footer-->
+  <br><br>
+  <footer>
+    <div class="footer-logo">
+      <img src="images/logo.png" alt="SEKU Guest House logo">
+    </div>
+    <div class="footer-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="reservation.html">Room Reservation</a></li>
+        <li><a href="staff.html">Staff Management</a></li>
+        <li><a href="stock.html">Stock Management</a></li>
+        <li><a href="admin.html">Manager Dashboard</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="group.html">work team</a></li>
+      </ul>
+    </div>
+    <div class="contact">
+      <p>Contact us:</p>
+      <p><i class="fas fa-phone"></i> +254-***-***-***</p>
+      <p><i class="fas fa-envelope"></i> info@sekuguesthouse.com</p>
+    </div>
+    <div class="copy">
+      <p>&copy; 2023 SEKU Guest House. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+</body>
+</html>
+11````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Login Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    label, input, select {
+      display: block;
+      margin-bottom: 10px;
+    }
+    input[type="submit"] {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+    .error {
+      color: red;
+      font-size: 0.8em;
+      margin-top: 5px;
+    }
+  </style>
+  <script>
+    window.addEventListener('load', function() {
+      // Validate the form on submit
+      document.querySelector('form').addEventListener('submit', function(e) {
+        var errors = [];
+
+        // Check that the username is not empty
+        var username = document.querySelector('#username').value;
+        if (username.trim() === '') {
+          errors.push('Username is required');
+        }
+
+        // Check that the role is selected
+        var role = document.querySelector('#role').value;
+        if (role === '') {
+          errors.push('Role is required');
+        }
+
+        // Check that the password is not empty
+        var password = document.querySelector('#password').value;
+        if (password.trim() === '') {
+          errors.push('Password is required');
+        }
+
+        // If there are any errors, prevent the form from submitting and display them
+        if (errors.length > 0) {
+          e.preventDefault();
+          var errorList = document.querySelector('#errors');
+          errorList.innerHTML = '';
+          errors.forEach(function(error) {
+            var li = document.createElement('li');
+            li.textContent = error;
+            errorList.appendChild(li);
+          });
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <form method="post" action="login.php">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    
+    <label for="role">Role:</label>
+    <select id="role" name="role" required>
+      <option value="">Select a role</option>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+    
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    
+    <input type="submit" value="Log In">
+    <ul id="errors"></ul>
+  </form>
+</body>
+</html>

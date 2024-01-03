@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stock Management</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Reset styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Global styles */
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        background-color: yellowgreen;
+      }
+
+      /* Header styles */
+      header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: green;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+      }
+
+      header img {
+        height: 50px;
+        width: 50px;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      nav ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav li {
+        margin-right: 20px;
+      }
+
+      nav a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      nav a:hover {
+        background-color: yellowgreen;
+      }
+
+      /* Hero section styles */
+      .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: yellowgreen;
+        background-image: url("images/hero-image.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .hero-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .hero-content {
+        text-align: center;
+        margin-top: -50px;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* Services section styles */
+      .services {
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .services h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .services__container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .services__item {
+        text-align: center;
+        flex-basis: calc(33.33% - 1rem);
+        background-color: yellowgreen;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .services__item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 1rem;
+      }
+
+      .services__item h3 {
+        margin-bottom: 0.5rem;
+      }
+
+      .services__item p {
+        margin-bottom: 1rem;
+      }
+
+      /* Restaurant menu styles */
+      .menu {
+        padding: 2rem;
+      }
+
+      .menu h2 {
+        margin-bottom: 1rem;
+      }
+
+      .menu__table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+      }
+
+      .menu__table th,
+      .menu__table td {
+        padding: 0.5rem;
+        text-align: left;
+      }
+
+      .menu__table th {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .menu__table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .menu__table tr:hover {
+        background-color: #ddd;
+      }
+
+      /*Offers section style*/
+      .offers {
+        background-color: yellowgreen;
+        padding: 50px 0;
+        text-align: center;
+      }
+
+      .offers h2 {
+        font-size: 36px;
+        margin-bottom: 50px;
+      }
+
+      .offers-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        background-color: yellowgreen;
+      }
+
+      .offer {
+        flex-basis: 300px;
+        margin: 30px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: beige;
+      }
+
+      .offer img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+
+      .offer h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .offer p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      /*Footer*/
+      /* Footer styles */
+      footer {
+        background-color: green;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+      }
+
+      footer img {
+        height: 50px;
+      }
+
+      footer p {
+        font-size: 14px;
+      }
+
+      footer nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      footer nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      footer nav a:hover {
+        color: #aaa;
+      }
+
+      /**About main section**/
+      /* Main section styles */
+      main {
+        margin: 2rem auto;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+      }
+      body {
+        background-color: green;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 10px;
+        overflow: hidden;
+      }
+
+      .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .image-caption {
+        text-align: center;
+        font-style: italic;
+        color: white;
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        list-style-type: disc;
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      li {
+        font-size: 1.2rem;
+        line-height: 1.5;
+      }
+
+      /**Room reservation**/
+      /**Availability form**/
+      #availability {
+        padding: 50px;
+        background-color: yellowgreen;
+      }
+
+      #availability h2 {
+        font-size: 36px;
+        text-align: center;
+      }
+
+      #availability form {
+        background-color: yellowgreen;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #availability label {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      #availability select,
+      #availability input[type="date"] {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+
+      #availability button[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      #availability button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+
+      .availability-results {
+        margin-top: 30px;
+      }
+
+      .availability-results h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .availability-results p {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+
+      .availability-results span {
+        font-weight: bold;
+      }
+
+      .image-container {
+        margin: auto;
+        width: 725px;
+        height: 225;
+      }
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10%;
+        border: 5px solid beige;
+      }
+
+      .image-containerr {
+        margin: auto;
+        width: 725px;
+        height: 225;
+      }
+      .image-containerr img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10%;
+        border: 5px solid beige;
+      }
+
+      .image-container6 {
+        margin: auto;
+        width: 725px;
+        height: 225;
+      }
+      .image-container6 img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10%;
+        border: 5px solid beige;
+      }
+
+      .service-container {
+        text-align: center;
+        margin-top: -50px;
+      }
+
+      .service-container h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #333;
+      }
+      .service-container1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .service-container h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .service-container2 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .service-container h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .service-container3 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .service-container h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .service-container4 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .service-container h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .service-container5 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .service-container h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      /**Reservation form **/
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="date"],
+      select,
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #213822;
+      }
+
+      input[type="submit"]:active {
+        background-color: #3e8e41;
+        transform: translateY(1px);
+      }
+
+      select {
+        height: 40px;
+      }
+
+      input:required {
+        border-color: #ff4136;
+      }
+
+      input:valid {
+        border-color: #2ecc40;
+      }
+
+      /**Reservation records**/
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      thead th {
+        text-align: left;
+        background-color: #f2f2f2;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tbody tr:hover {
+        background-color: #ddd;
+      }
+
+      .download-button {
+        background-color: #4caf50;
+        color: green;
+        border: none;
+        padding: 12px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      a:link {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+      }
+      a:visited {
+        color: rgb(255, 255, 255);
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: black;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      a:active {
+        color: red;
+      }
+
+      nav ul li a {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      nav ul li a:hover {
+        color: black;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      nav ul li a.current {
+        color: red;
+      }
+
+      /*login form*/
+      form {
+        background-color: green;
+        padding: 20px;
+        border-radius: 5px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: white;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 3px;
+        border: none;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        background-color: white;
+        color: green;
+        padding: 10px 20px;
+        border-radius: 3px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="logo">
+        <img src="images/logo.png" alt="Seku Guest House Logo" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="reservation.html">Room Reservation</a></li>
+          <li><a href="staff.html">Staff Management</a></li>
+          <li><a href="stock.html">Stock Management</a></li>
+          <li><a href="admin.html">Manager Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="group.html">work team</a></li>
+        </ul>
+      </nav>
+    </header>
+    <br /><br /><br /><br />
+
+    <!-- stock records -->
+    <h1>Stock Records</h1>
+    <!-- food stock table -->
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+        text-align: center;
+      }
+    </style>
+    <div class="food-stock">
+      <h3>Food Stock Details</h3>
+      <table id="food-stock-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Item name</th>
+            <th>Opened</th>
+            <th>Additional</th>
+            <th>Issued</th>
+            <th>Closing</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2023-04-01</td>
+            <td>Wheat flour</td>
+            <td>500</td>
+            <td>100</td>
+            <td>200</td>
+            <td>400</td>
+            <td>
+              <button class="edit-btn" onclick="editRow(this)">Edit</button>
+              <button class="delete-btn" onclick="deleteRow(this)">
+                Delete
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>2023-04-02</td>
+            <td>Maize flour</td>
+            <td>400</td>
+            <td>50</td>
+            <td>150</td>
+            <td>300</td>
+            <td>
+              <button class="edit-btn" onclick="editRow(this)">Edit</button>
+              <button class="delete-btn" onclick="deleteRow(this)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-btn" onclick="addRow('food-stock-table')">
+        Add Record
+      </button>
+      <button class="download-btn" onclick="downloadCSV('food-stock-table')">
+        Download
+      </button>
+    </div>
+    <br /><br />
+    <style>
+      button {
+        background-color: #4caf50;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 10px 20px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+    </style>
+
+    <!-- accommodation stock table -->
+    <div class="accommodation-stock">
+      <h3>Accommodation Stock Details</h3>
+      <table id="accommodation-stock-table">
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Item name</th>
+            <th>Opened</th>
+            <th>Additional</th>
+            <th>Issued</th>
+            <th>Closing</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2023-04-01</td>
+            <td>Beddings</td>
+            <td>50</td>
+            <td>10</td>
+            <td>20</td>
+            <td>40</td>
+            <td>
+              <button class="edit-btn" onclick="editRow(this)">Edit</button>
+              <button class="delete-btn" onclick="deleteRow(this)">
+                Delete
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td>2023-04-02</td>
+            <td>Dust bin</td>
+            <td>40</td>
+            <td>5</td>
+            <td>15</td>
+            <td>30</td>
+            <td>
+              <button class="edit-btn" onclick="editRow(this)">Edit</button>
+              <button class="delete-btn" onclick="deleteRow(this)">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button class="add-btn" onclick="addRow('accommodation-stock-table')">
+        Add Record
+      </button>
+      <button
+        class="download-btn"
+        onclick="downloadCSV('accommodation-stock-table')"
+      >
+        Download
+      </button>
+    </div>
+
+    <script>
+      // Helper function to get the parent <tr> element of a button
+      function getRowElement(button) {
+        return button.closest("tr");
+      }
+
+      // Helper function to get the values of the input fields in a row
+      function getRowData(row) {
+        const date = row.querySelector('input[name$="_date"]').value;
+        const opened = parseInt(
+          row.querySelector('input[name$="_opened"]').value,
+          10
+        );
+        const additional = parseInt(
+          row.querySelector('input[name$="_additional"]').value,
+          10
+        );
+        const issued = parseInt(
+          row.querySelector('input[name$="_issued"]').value,
+          10
+        );
+        const closing = parseInt(
+          row.querySelector('input[name$="_closing"]').value,
+          10
+        );
+        return { date, opened, additional, issued, closing };
+      }
+
+      // Helper function to set the values of the input fields in a row
+      function setRowData(row, data) {
+        row.querySelector('input[name$="_date"]').value = data.date;
+        row.querySelector('input[name$="_opened"]').value = data.opened;
+        row.querySelector('input[name$="_additional"]').value = data.additional;
+        row.querySelector('input[name$="_issued"]').value = data.issued;
+        row.querySelector('input[name$="_closing"]').value = data.closing;
+      }
+
+      // Function to add a new row to the table
+      function addRecord(tableId) {
+        const table = document.getElementById(tableId);
+        const tbody = table.querySelector("tbody");
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+    <td><input type="date" name="${tableId}_date"></td>
+    <td><input type="number" name="${tableId}_opened"></td>
+    <td><input type="number" name="${tableId}_additional"></td>
+    <td><input type="number" name="${tableId}_issued"></td>
+    <td><input type="number" name="${tableId}_closing"></td>
+    <td>
+      <button class="edit-btn">Edit</button>
+      <button class="delete-btn">Delete</button>
+      <button class="save-btn">Save</button>
+      <button class="cancel-btn">Cancel</button>
+    </td>
+  `;
+        tbody.appendChild(newRow);
+        return newRow;
+      }
+
+      // Function to delete a row from the table
+      function deleteRow(row) {
+        getRowElement(row).remove();
+      }
+
+      // Function to edit a row in the table
+      function editRow(button) {
+        let row = button.parentNode.parentNode;
+        let item = row.cells[1].innerHTML;
+        let price = row.cells[2].innerHTML;
+        row.cells[1].innerHTML = "<input type='text' value='" + item + "'>";
+        row.cells[2].innerHTML = "<input type='number' value='" + price + "'>";
+        row.cells[3].innerHTML =
+          "<button onclick='saveRow(this)'>Save</button>";
+      }
+
+      // Function to save changes made to a row in the table
+      function saveRow(row) {
+        const rowElement = getRowElement(row);
+        const rowData = getRowData(rowElement);
+        setRowData(rowElement, { ...rowData, isEditing: false });
+      }
+
+      // Function to cancel editing a row in the table
+      function cancelRow(row) {
+        const rowElement = getRowElement(row);
+        const rowData = getRowData(rowElement);
+        setRowData(rowElement, { ...rowData, isEditing: false });
+      }
+
+      // Function to download the table data as CSV
+      function downloadCSV(tableId) {
+        var csv = [];
+        var rows = document
+          .getElementById(tableId)
+          .querySelectorAll("tbody tr");
+
+        for (var i = 0; i < rows.length; i++) {
+          var row = [],
+            cols = rows[i].querySelectorAll("td, th");
+
+          for (var j = 0; j < cols.length; j++) {
+            var input = cols[j].querySelector("input");
+            if (input) {
+              row.push(input.value);
+            } else {
+              row.push(cols[j].textContent);
+            }
+          }
+          csv.push(row.join(","));
+        }
+
+        var downloadLink = document.createElement("a");
+        var blob = new Blob(["\ufeff", csv.join("\n")], {
+          type: "text/csv;charset=utf-8;",
+        });
+        var url = URL.createObjectURL(blob);
+        downloadLink.href = url;
+        downloadLink.download = tableId + "-stock.csv";
+
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      }
+
+      document
+        .querySelector(".food-stock .download-btn")
+        .addEventListener("click", function () {
+          downloadCSV("food-stock-table");
+        });
+
+      document
+        .querySelector(".accommodation-stock .download-btn")
+        .addEventListener("click", function () {
+          downloadCSV("accommodation-stock-table");
+        });
+
+      function addRow() {
+        let table = document.getElementById("accommodation stock details");
+        let newRow = table.insertRow(-1);
+        let dateCell = newRow.insertCell(0);
+        let itemNameCell = newRow.insertCell(1);
+        let openedCell = newRow.insertCell(2);
+        let additionalCell = newRow.insertCell(3);
+        let issuedCell = newRow.insertCell(4);
+        let closingCell = newRow.insertCell(5);
+        let actionCell = newRow.insertCell(6);
+        idCell.innerHTML = table.rows.length - 1;
+        itemCell.innerHTML = "<input type='text' placeholder='Item Name'>";
+        priceCell.innerHTML = "<input type='number' placeholder='Price'>";
+        actionCell.innerHTML = "<button onclick='saveRow(this)'>Save</button>";
+      }
+    </script>
+
+    <!--footer-->
+    <footer>
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="SEKU Guest House logo" />
+      </div>
+      <div class="footer-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reservation.html">Room Reservation</a></li>
+          <li><a href="staff.html">Staff Management</a></li>
+          <li><a href="stock.html">Stock Management</a></li>
+          <li><a href="admin.html">Manager Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="group.html">work team</a></li>
+        </ul>
+      </div>
+      <div class="contact">
+        <p>Contact us:</p>
+        <p><i class="fas fa-phone"></i> +254-***-***-***</p>
+        <p><i class="fas fa-envelope"></i> info@sekuguesthouse.com</p>
+      </div>
+      <div class="copy">
+        <p>&copy; 2023 SEKU Guest House. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

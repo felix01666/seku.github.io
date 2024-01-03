@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manager Dashboard</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Reset styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Global styles */
+      body {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        line-height: 1.5;
+        color: #333;
+        background-color: yellowgreen;
+      }
+
+      /* Header styles */
+      header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        background-color: green;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 999;
+      }
+
+      header img {
+        height: 50px;
+        width: 50px;
+      }
+
+      nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      nav ul {
+        display: flex;
+        flex-direction: row;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav li {
+        margin-right: 20px;
+      }
+
+      nav a {
+        display: block;
+        color: #333;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: 600;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+
+      nav a:hover {
+        background-color: yellowgreen;
+      }
+
+      /* Hero section styles */
+      .hero {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: yellowgreen;
+        background-image: url("images/hero-image.jpg");
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .hero-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+      }
+
+      .hero-content {
+        text-align: center;
+        margin-top: -50px;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #333;
+      }
+
+      /* Services section styles */
+      .services {
+        text-align: center;
+        padding: 2rem;
+      }
+
+      .services h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .services__container {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .services__item {
+        text-align: center;
+        flex-basis: calc(33.33% - 1rem);
+        background-color: yellowgreen;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+
+      .services__item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        margin-bottom: 1rem;
+      }
+
+      .services__item h3 {
+        margin-bottom: 0.5rem;
+      }
+
+      .services__item p {
+        margin-bottom: 1rem;
+      }
+
+      /* Restaurant menu styles */
+      .menu {
+        padding: 2rem;
+      }
+
+      .menu h2 {
+        margin-bottom: 1rem;
+      }
+
+      .menu__table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 1rem;
+      }
+
+      .menu__table th,
+      .menu__table td {
+        padding: 0.5rem;
+        text-align: left;
+      }
+
+      .menu__table th {
+        background-color: #333;
+        color: #fff;
+      }
+
+      .menu__table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      .menu__table tr:hover {
+        background-color: #ddd;
+      }
+
+      /*Offers section style*/
+      .offers {
+        background-color: yellowgreen;
+        padding: 50px 0;
+        text-align: center;
+      }
+
+      .offers h2 {
+        font-size: 36px;
+        margin-bottom: 50px;
+      }
+
+      .offers-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        background-color: yellowgreen;
+      }
+
+      .offer {
+        flex-basis: 300px;
+        margin: 30px;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: beige;
+      }
+
+      .offer img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 20px;
+      }
+
+      .offer h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .offer p {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
+      /*Footer*/
+      /* Footer styles */
+      footer {
+        background-color: green;
+        color: white;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+      }
+
+      footer img {
+        height: 50px;
+      }
+
+      footer p {
+        font-size: 14px;
+      }
+
+      footer nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      footer nav a {
+        color: #fff;
+        text-decoration: none;
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      footer nav a:hover {
+        color: #aaa;
+      }
+
+      /**About main section**/
+      /* Main section styles */
+      main {
+        margin: 2rem auto;
+        max-width: 800px;
+        display: flex;
+        flex-direction: column;
+      }
+      body {
+        background-color: green;
+      }
+
+      .image-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .image {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 10px;
+        overflow: hidden;
+      }
+
+      .image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .image-caption {
+        text-align: center;
+        font-style: italic;
+        color: white;
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.2rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+      }
+
+      ul {
+        list-style-type: disc;
+        margin-left: 2rem;
+        margin-bottom: 1rem;
+      }
+
+      li {
+        font-size: 1.2rem;
+        line-height: 1.5;
+      }
+
+      /**Room reservation**/
+      /**Availability form**/
+      #availability {
+        padding: 50px;
+        background-color: yellowgreen;
+      }
+
+      #availability h2 {
+        font-size: 36px;
+        text-align: center;
+      }
+
+      #availability form {
+        background-color: yellowgreen;
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      #availability label {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      #availability select,
+      #availability input[type="date"] {
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+
+      #availability button[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        font-size: 18px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      #availability button[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+
+      .availability-results {
+        margin-top: 30px;
+      }
+
+      .availability-results h3 {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .availability-results p {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+
+      .availability-results span {
+        font-weight: bold;
+      }
+
+      .image-container {
+        margin: auto;
+        width: 725px;
+        height: 225;
+      }
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10%;
+        border: 5px solid beige;
+      }
+
+      .image-containerr {
+        margin: auto;
+        width: 725px;
+        height: 225;
+      }
+      .image-containerr img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10%;
+        border: 5px solid beige;
+      }
+
+      .image-container6 {
+        margin: auto;
+        width: 725px;
+        height: 225;
+      }
+      .image-container6 img {
+        width: 100%;
+        height: 100%;
+        border-radius: 10%;
+        border: 5px solid beige;
+      }
+
+      .service-container {
+        text-align: center;
+        margin-top: -50px;
+      }
+
+      .service-container h2 {
+        font-size: 3rem;
+        font-weight: bold;
+        color: #333;
+      }
+      .service-container1 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .service-container h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .service-container2 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .service-container h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .service-container3 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .service-container h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .service-container4 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .service-container h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+      .service-container5 {
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      .service-container h2 {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+      }
+
+      /**Reservation form **/
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      input[type="text"],
+      input[type="tel"],
+      input[type="date"],
+      select,
+      input[type="number"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #213822;
+      }
+
+      input[type="submit"]:active {
+        background-color: #3e8e41;
+        transform: translateY(1px);
+      }
+
+      select {
+        height: 40px;
+      }
+
+      input:required {
+        border-color: #ff4136;
+      }
+
+      input:valid {
+        border-color: #2ecc40;
+      }
+
+      /**Reservation records**/
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      thead th {
+        text-align: left;
+        background-color: #f2f2f2;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      tbody tr:hover {
+        background-color: #ddd;
+      }
+
+      .download-button {
+        background-color: #4caf50;
+        color: green;
+        border: none;
+        padding: 12px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      a:link {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+      }
+      a:visited {
+        color: rgb(255, 255, 255);
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: black;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      a:active {
+        color: red;
+      }
+
+      nav ul li a {
+        color: white;
+        background-color: transparent;
+        text-decoration: none;
+      }
+
+      nav ul li a:hover {
+        color: black;
+        background-color: transparent;
+        text-decoration: underline;
+      }
+
+      nav ul li a.current {
+        color: red;
+      }
+
+      /*login form*/
+      form {
+        background-color: green;
+        padding: 20px;
+        border-radius: 5px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        color: white;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        border-radius: 3px;
+        border: none;
+        font-size: 16px;
+      }
+
+      input[type="submit"] {
+        background-color: white;
+        color: green;
+        padding: 10px 20px;
+        border-radius: 3px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <img src="images/logo.png" alt="Seku Guest House Logo" />
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="reservation.html">Room Reservation</a></li>
+          <li><a href="staff.html">Staff Management</a></li>
+          <li><a href="stock.html">Stock Management</a></li>
+          <li><a href="admin.html">Manager Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+    <br /><br /><br /><br />
+
+    <!--Room reservation-->
+    <title>Room Management</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+        text-align: center;
+      }
+    </style>
+    <h1>Room Management</h1>
+    <h3>Room Reservation</h3>
+    <br />
+    <table id="room_reservation">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>ID/Passport Number</th>
+          <th>Nationality</th>
+          <th>Phone Number</th>
+          <th>Date of Arrival</th>
+          <th>Date of Departure</th>
+          <th>Room Category</th>
+          <th>Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John Smith</td>
+          <td>1234567890</td>
+          <td>Kenyan</td>
+          <td>0700 123 456</td>
+          <td>2023-04-01</td>
+          <td>2023-04-05</td>
+          <td>Single Room</td>
+          <td>2000</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jane Doe</td>
+          <td>0987654321</td>
+          <td>Ugandan</td>
+          <td>0712 987 654</td>
+          <td>2023-04-03</td>
+          <td>2023-04-08</td>
+          <td>Double Room</td>
+          <td>3000</td>
+        </tr>
+      </tbody>
+    </table>
+    <button onclick="downloadCSV()">Download</button><br />
+    <style>
+      button {
+        background-color: #4caf50;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 10px 20px;
+        border: none;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+    </style>
+
+    <script>
+      function downloadCSV() {
+        var csv = [];
+        var rows = document.querySelectorAll("#room_reservation tbody tr");
+
+        // Add header row to CSV
+        var headerRow = [
+          "ID",
+          "Name",
+          "ID/Passport No.",
+          "Nationality",
+          "Phone No.",
+          "Arrival",
+          "Departure",
+          "Category",
+          "Rate",
+        ];
+        csv.push(headerRow.join(","));
+
+        // Add data rows to CSV
+        for (var i = 0; i < rows.length; i++) {
+          var row = [];
+          var cells = rows[i].querySelectorAll("td");
+
+          for (var j = 0; j < cells.length; j++) {
+            row.push(cells[j].textContent);
+          }
+
+          csv.push(row.join(","));
+        }
+
+        // Download CSV file
+        var filename = "room_reservations.csv";
+        var csvFile = new Blob([csv.join("\n")], { type: "text/csv" });
+        var link = document.createElement("a");
+        link.setAttribute("href", URL.createObjectURL(csvFile));
+        link.setAttribute("download", filename);
+        document.body.appendChild(link);
+        link.click();
+      }
+    </script>
+
+    <!--ROOM UPDATE-->
+    <!-- Room Category Management -->
+    <h3>Room Category Management</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Number of Rooms</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Executive</td>
+          <td>
+            <input
+              type="number"
+              id="single-rooms"
+              name="single-rooms"
+              value="5"
+              min="0"
+            />
+          </td>
+          <td>
+            <button onclick="updateRooms('single')">Update</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Normal</td>
+          <td>
+            <input
+              type="number"
+              id="double-rooms"
+              name="double-rooms"
+              value="10"
+              min="0"
+            />
+          </td>
+          <td>
+            <button onclick="updateRooms('double')">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br /><br /><br />
+
+    <script>
+      function updateRooms(category) {
+        var numRooms = document.getElementById(category + "-rooms").value;
+        // Update the number of rooms in the database
+        // ...
+        alert("Number of " + category + " rooms updated to " + numRooms);
+      }
+    </script>
+
+    <!--staff management-->
+    <!--staff record-->
+    <h1>Staff Management</h1>
+    <h3>Staff Records</h3>
+
+    <table id="staff-records">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Contact</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>John Doe</td>
+          <td>0712345678</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Jane Doe</td>
+          <td>0712345678</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <script>
+      // Get the table element
+      var table = document.getElementById("staff-records");
+
+      // Initialize an empty array to store the data
+      var data = [];
+
+      // Loop through each row in the table (skipping the header row)
+      for (var i = 1; i < table.rows.length; i++) {
+        // Get the cells in the current row
+        var cells = table.rows[i].cells;
+
+        // Initialize an empty object to store the cell data
+        var row = {};
+
+        // Loop through each cell in the row
+        for (var j = 0; j < cells.length; j++) {
+          // Get the cell data and add it to the row object
+          var cellData = cells[j].innerText;
+          var header = table.rows[0].cells[j].innerText;
+          row[header] = cellData;
+        }
+
+        // Add the row object to the data array
+        data.push(row);
+      }
+
+      // Add a button to add a new staff member
+      var addButton = document.createElement("button");
+      addButton.innerHTML = "Add Staff";
+      addButton.onclick = function () {
+        var newRow = table.insertRow(-1);
+        newRow.innerHTML =
+          "<td contenteditable='true'></td><td contenteditable='true'></td><td contenteditable='true'></td><td><button class='delete-button'>Delete</button></td>";
+        var deleteButton = newRow.querySelector(".delete-button");
+        deleteButton.onclick = function () {
+          table.deleteRow(newRow.rowIndex);
+        };
+      };
+      document.body.appendChild(addButton);
+
+      // Add a button to download the table as a CSV
+      var downloadButton = document.createElement("button");
+      downloadButton.innerHTML = "Download";
+      downloadButton.onclick = function () {
+        // Convert the data array to a CSV string
+        var csv = "ID,Name,Position,Department,Contact\n";
+        for (var i = 0; i < data.length; i++) {
+          var row = data[i];
+          csv +=
+            row["ID"] + "," + row["Name"] + "," + "," + row["Contact"] + "\n";
+        }
+
+        // Create a link element and click it to download the CSV file
+        var link = document.createElement("a");
+        link.setAttribute(
+          "href",
+          encodeURI("data:text/csv;charset=utf-8," + csv)
+        );
+        link.setAttribute("download", "staff-records.csv");
+        link.click();
+      };
+      document.body.appendChild(downloadButton);
+    </script>
+
+    <!--attendance record-->
+    <div class="section">
+      <h3>Staff Attendance Records</h3>
+      <table id="staff-attendance-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Sign In Time</th>
+            <th>Sign Out Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>001</td>
+            <td>John Doe</td>
+            <td>08:00 AM</td>
+            <td>05:00 PM</td>
+          </tr>
+          <tr>
+            <td>002</td>
+            <td>Jane Doe</td>
+            <td>09:00 AM</td>
+            <td>06:00 PM</td>
+          </tr>
+          <!-- more rows -->
+        </tbody>
+      </table>
+      <button onclick="downloadCSV('staff-attendance-table')">Download</button>
+    </div>
+    <br /><br /><br /><br />
+
+    <script>
+      function downloadCSV(tableId) {
+        // Get the table data
+        const table = document.getElementById(tableId);
+        const rows = table.getElementsByTagName("tr");
+        const headers = Array.from(rows[0].querySelectorAll("th")).map(
+          (header) => header.textContent
+        );
+        const data = Array.from(rows)
+          .slice(1)
+          .map((row) =>
+            Array.from(row.querySelectorAll("td")).map(
+              (cell) => cell.textContent
+            )
+          );
+
+        // Convert to CSV format
+        const csvData = [headers, ...data]
+          .map((row) => row.join(","))
+          .join("\n");
+
+        // Download the CSV file
+        const blob = new Blob([csvData], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", "staff-attendance.csv");
+        link.style.display = "none";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    </script>
+
+    <!--menu management-->
+    <section class="menu-management">
+      <h2>Menu Management</h2>
+      <table id="menu-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Item</th>
+            <th>Price (Ksh)</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Chicken</td>
+            <td>Ksh500</td>
+            <td>
+              <button onclick="editRow(this)">Edit</button>
+              <button onclick="deleteRow(this)">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Fish</td>
+            <td>Ksh600</td>
+            <td>
+              <button onclick="editRow(this)">Edit</button>
+              <button onclick="deleteRow(this)">Delete</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Pizza</td>
+            <td>Ksh700</td>
+            <td>
+              <button onclick="editRow(this)">Edit</button>
+              <button onclick="deleteRow(this)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button onclick="addRow()">Add Item</button>
+      <button onclick="downloadTable()">Download Menu</button>
+    </section>
+    <br /><br /><br />
+
+    <script>
+      function addRow() {
+        let table = document.getElementById("menu-table");
+        let newRow = table.insertRow(-1);
+        let idCell = newRow.insertCell(0);
+        let itemCell = newRow.insertCell(1);
+        let priceCell = newRow.insertCell(2);
+        let actionCell = newRow.insertCell(3);
+        idCell.innerHTML = table.rows.length - 1;
+        itemCell.innerHTML = "<input type='text' placeholder='Item Name'>";
+        priceCell.innerHTML = "<input type='number' placeholder='Price'>";
+        actionCell.innerHTML = "<button onclick='saveRow(this)'>Save</button>";
+      }
+
+      function saveRow(button) {
+        let row = button.parentNode.parentNode;
+        let id = row.cells[0].innerHTML;
+        let item = row.cells[1].children[0].value;
+        let price = row.cells[2].children[0].value;
+        row.cells[1].innerHTML = item;
+        row.cells[2].innerHTML = price;
+        row.cells[3].innerHTML =
+          "<button onclick='editRow(this)'>Edit</button><button onclick='deleteRow(this)'>Delete</button>";
+      }
+
+      function editRow(button) {
+        let row = button.parentNode.parentNode;
+        let item = row.cells[1].innerHTML;
+        let price = row.cells[2].innerHTML;
+        row.cells[1].innerHTML = "<input type='text' value='" + item + "'>";
+        row.cells[2].innerHTML = "<input type='number' value='" + price + "'>";
+        row.cells[3].innerHTML =
+          "<button onclick='saveRow(this)'>Save</button>";
+      }
+
+      function deleteRow(button) {
+        let row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+      }
+
+      function downloadTable() {
+        let table = document.getElementById("menu-table");
+        let headers = [];
+        let rows = [];
+
+        // Get headers
+        for (let i = 0; i < table.rows[0].cells.length; i++) {
+          headers.push(table.rows[0].cells[i].textContent);
+        }
+
+        // Get rows
+        for (let i = 1; i < table.rows.length; i++) {
+          let row = [];
+          for (let j = 0; j < table.rows[i].cells.length; j++) {
+            row.push(table.rows[i].cells[j].textContent);
+          }
+          rows.push(row);
+        }
+
+        // Create CSV string
+        let csv = headers.join(",") + "\n";
+        for (let i = 0; i < rows.length; i++) {
+          csv += rows[i].join(",") + "\n";
+        }
+
+        // Download CSV file
+        let link = document.createElement("a");
+        link.setAttribute(
+          "href",
+          "data:text/csv;charset=utf-8," + encodeURIComponent(csv)
+        );
+        link.setAttribute("download", "menu.csv");
+        link.style.display = "none";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    </script>
+    <!--STOCK MANAGEMENT-->
+    <!--food stock-->
+    <div class="stock-records">
+      <h2>Stock Records</h2>
+      <div class="food-stock">
+        <h3>Food Stock Details</h3>
+        <table id="food-stock-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Item name</th>
+              <th>Opened</th>
+              <th>Additional</th>
+              <th>Issued</th>
+              <th>Closing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2023-04-01</td>
+              <td>Wheat flour</td>
+              <td>500</td>
+              <td>100</td>
+              <td>200</td>
+              <td>400</td>
+            </tr>
+            <tr>
+              <td>2023-04-02</td>
+              <td>Maize flour</td>
+              <td>400</td>
+              <td>50</td>
+              <td>150</td>
+              <td>300</td>
+            </tr>
+          </tbody>
+        </table>
+        <button
+          id="export-food-stock"
+          onclick="exportTableToCSV('food-stock-table', 'Food Stock Details')"
+        >
+          Download
+        </button>
+      </div>
+
+      <!--accomodation stock-->
+      <div class="accommodation-stock">
+        <h3>Accommodation Stock Details</h3>
+        <table id="accommodation-stock-table">
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Item name</th>
+              <th>Opened</th>
+              <th>Additional</th>
+              <th>Issued</th>
+              <th>Closing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2023-04-01</td>
+              <td>Beddings</td>
+              <td>50</td>
+              <td>10</td>
+              <td>20</td>
+              <td>40</td>
+            </tr>
+            <tr>
+              <td>2023-04-02</td>
+              <td>Dust bin</td>
+              <td>40</td>
+              <td>5</td>
+              <td>15</td>
+              <td>30</td>
+            </tr>
+          </tbody>
+        </table>
+        <button
+          id="export-accommodation-stock"
+          onclick="exportTableToCSV('accommodation-stock-table', 'Accommodation Stock Details')"
+        >
+          Download
+        </button>
+      </div>
+    </div>
+    <br /><br /><br />
+
+    <script>
+      function downloadCSV(csv, filename) {
+        const csvFile = new Blob([csv], { type: "text/csv" });
+        const downloadLink = document.createElement("a");
+        downloadLink.download = filename;
+        downloadLink.href = window.URL.createObjectURL(csvFile);
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+      }
+
+      function exportTableToCSV(tableId, filename) {
+        const csv = [];
+        const rows = document.querySelectorAll(`#${tableId} tr`);
+        for (let i = 0; i < rows.length; i++) {
+          const row = [],
+            cols = rows[i].querySelectorAll("td, th");
+          for (let j = 0; j < cols.length; j++) row.push(cols[j].innerText);
+          csv.push(row.join(","));
+        }
+        downloadCSV(csv.join("\n"), `${filename}.csv`);
+      }
+    </script>
+
+    <!-- Financial Records -->
+    <!-- Accommodation Transactions Table -->
+    <h1>Financial Records</h1>
+    <h3>Accommodation Transactions</h3>
+    <table id="accommodation-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Guest Name</th>
+          <th>Room Number</th>
+          <th>Amount Paid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2023-04-01</td>
+          <td>John Smith</td>
+          <td>10</td>
+          <td>2000</td>
+        </tr>
+        <tr>
+          <td>2023-04-01</td>
+          <td>Jane Doe</td>
+          <td>5</td>
+          <td>1500</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <!-- Restaurant Transactions Table -->
+    <h3>Restaurant Transactions</h3>
+    <table id="restaurant-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Contact</th>
+          <th>Amount Paid</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2023-04-01</td>
+          <td>0712345678</td>
+          <td>700</td>
+        </tr>
+        <tr>
+          <td>2023-04-01</td>
+          <td>0712345678</td>
+          <td>500</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <!-- Revenue Calculation Table -->
+    <h3>Revenue Calculation</h3>
+    <table id="revenue-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Accommodation Revenue</th>
+          <th>Restaurant Revenue</th>
+          <th>Total Revenue</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>2023-04-01</td>
+          <td>25000</td>
+          <td>10000</td>
+          <td>35000</td>
+        </tr>
+        <tr>
+          <td>2023-04-01</td>
+          <td>20000</td>
+          <td>12000</td>
+          <td>32000</td>
+        </tr>
+      </tbody>
+    </table>
+    <br />
+    <!-- Download Button for the Accommodation Transactions Table -->
+
+    <button onclick="downloadCSV('accommodation-table')">
+      Download Accommodation Transactions
+    </button>
+    <!-- Download Button for the Restaurant Transactions Table -->
+
+    <button onclick="downloadCSV('restaurant-table')">
+      Download Restaurant Transactions
+    </button>
+    <!-- Download Button for the Revenue Calculation Table -->
+
+    <button onclick="downloadCSV('revenue-table')">
+      Download Revenue Calculation
+    </button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+    <script>
+      function downloadCSV(tableID) {
+        const csv = Papa.unparse(
+          document.querySelector("#" + tableID + " > tbody").rows
+        );
+        const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", tableID + ".csv");
+        link.style.display = "none";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+
+      // Code to populate the accommodation table with data from the database
+
+      // Code to populate the restaurant table with data from the database
+
+      // Code to calculate the revenue and populate the revenue table with the results
+    </script>
+
+    <!--footer-->
+    <footer>
+      <div class="footer-logo">
+        <img src="images/logo.png" alt="SEKU Guest House logo" />
+      </div>
+      <div class="footer-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="reservation.html">Room Reservation</a></li>
+          <li><a href="staff.html">Staff Management</a></li>
+          <li><a href="stock.html">Stock Management</a></li>
+          <li><a href="admin.html">Manager Dashboard</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="group.html">work team</a></li>
+        </ul>
+      </div>
+      <div class="contact">
+        <p>Contact us:</p>
+        <p><i class="fas fa-phone"></i> +254-***-***-***</p>
+        <p><i class="fas fa-envelope"></i> info@sekuguesthouse.com</p>
+      </div>
+      <div class="copy">
+        <p>&copy; 2023 SEKU Guest House. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

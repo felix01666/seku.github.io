@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Gallery</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      background-color: yellowgreen;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      margin: 10px;
+      overflow: hidden;
+    }
+
+    .image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-caption {
+      text-align: center;
+      font-style: italic;
+      color: white;
+    }
+
+    .text-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      max-width: 800px;
+    }
+
+    .text {
+      text-align: center;
+      margin: 10px;
+      width: 200px;
+    }
+
+    .text h2 {
+      font-size: 24px;
+      color: white;
+    }
+
+    .text p {
+      font-size: 16px;
+      color: white;
+    }
+  </style>
+</head>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<body><br>
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Seku Guest House Logo">
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="reservation.html">Room Reservation</a></li>
+        <li><a href="staff.html">Staff Management</a></li>
+        <li><a href="stock.html">Stock Management</a></li>
+        <li><a href="admin.html">Manager Dashboard</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="group.html">work team</a></li>
+      </ul>
+  </header>
+<section images="images"><br><br><br>
+
+  <div class="image-container">
+    
+    <div class="image">
+      <div><img src =" images/img1.jpg" alt="Image 1"></div>
+    </div>
+    <div class="image-caption">G127/1403/2021 <br>Samuel Ndaiga</div>
+      <div class="text"> 
+    </div>
+    <div class="image">
+      <div><img src =" images/img2.jpg" alt="Image 1"></div>
+    </div>
+    <div class="image-caption">G127/1411/2021 <br>Benedict Omondi</div>
+      <div class="text"> 
+    </div>
+    <div class="image">
+      <div><img src =" images/img3.jpg" alt="Image 1"></div>
+    </div>
+    <div class="image-caption">G127/1405/2021 <br>Jared Omondi</div>
+      <div class="text"> 
+    </div>
+    <div class="image">
+      <div><img src =" images/img4.jpg" alt="Image 1"></div>
+    </div>
+    <div class="image-caption">G126/1295/2021 <br>Odeke Velius</div>
+      <div class="text"> 
+    </div>
+    <div class="image">
+      <div><img src =" images/img5.jpg" alt="Image 1"></div>
+    </div>
+    <div class="image-caption">G126/1326/2021<br>Elias Kwoba Kisia</div>
+      <div class="text">
+    </div>
+  </div>
+</section>
+ <!--footer-->
+ <footer>
+  <div class="footer-logo">
+    <img src="images/logo.png" alt="SEKU Guest House logo">
+  </div>
+  <div class="footer-nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="reservation.html">Room Reservation</a></li>
+      <li><a href="staff.html">Staff Management</a></li>
+      <li><a href="stock.html">Stock Management</a></li>
+      <li><a href="admin.html">Manager Dashboard</a></li>
+      <li><a href="about.html">About</a></li>  
+      <li><a href="group.html">work team</a></li>  
+    </ul>
+  </div>
+  <div class="contact">
+    <p>Contact us:</p>
+    <p><i class="fas fa-phone"></i> +254-xxx-xxx-xxx</p>
+    <p><i class="fas fa-envelope"></i> info@sekuguesthouse.com</p>
+  </div>
+  <div class="copy">
+    <p>&copy; 2023 SEKU Guest House. All Rights Reserved.</p>
+  </div>
+</footer>
+</body>
+</html>
